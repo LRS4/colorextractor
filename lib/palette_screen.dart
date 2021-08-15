@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import '../widgets/image_input.dart';
 
@@ -11,7 +12,28 @@ class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Color Extractor")),
+        appBar: AppBar(
+          title: RichText(
+            text: TextSpan(
+              children: [
+                WidgetSpan(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                    child: Icon(Icons.palette_outlined)
+                  ),
+                ),
+                TextSpan(
+                  text: 'Color Extractor',
+                  style: TextStyle(
+                    fontSize: 21
+                  )
+                ),
+              ],
+            ),
+          ),
+          centerTitle: true,
+          
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -22,9 +44,9 @@ class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
                   padding: EdgeInsets.all(10),
                   child: Column(
                     children: <Widget>[
-                      TextField(
-                        decoration: InputDecoration(labelText: "Title")
-                      ),
+                      //TextField(
+                        //decoration: InputDecoration(labelText: "Title")
+                      //),
                       SizedBox(height: 10),
                       ImageInput()
                     ],
@@ -35,20 +57,25 @@ class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
             ElevatedButton.icon(
                 icon: Icon(Icons.colorize),
                 label: Text("Extract Colors"),
-                onPressed: () {},
+                onPressed: () { },
                 style: ButtonStyle(
                     foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
+                      MaterialStateProperty.all<Color>(Colors.white),
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        EdgeInsets.zero),
+                      EdgeInsets.zero
+                    ),
                     elevation: MaterialStateProperty.all<double>(0.0),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     backgroundColor: MaterialStateProperty.all<Color>(
-                        Colors.purple.shade300),
+                      Colors.purple.shade300),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero,
-                            side: BorderSide(color: Colors.red)))))
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero,
+                          side: BorderSide(color: Colors.red)
+                      )
+                    )
+                )
+              )
           ],
         ));
   }
