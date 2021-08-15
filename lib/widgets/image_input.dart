@@ -37,8 +37,8 @@ class _ImageInputState extends State<ImageInput> {
     return Row(
       children: <Widget>[
         Container(
-          width: 175, 
-          height: 175, 
+          width: 200, 
+          height: 200, 
           decoration: BoxDecoration(
             border: Border.all(width: 1, color: Colors.grey)
           ),
@@ -68,7 +68,7 @@ class _ImageInputState extends State<ImageInput> {
               },
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                  EdgeInsets.only(left: 40, right: 40)
+                  EdgeInsets.only(left: 20, right: 20)
                 )
               )
             ),
@@ -81,7 +81,7 @@ class _ImageInputState extends State<ImageInput> {
               },
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                  EdgeInsets.only(left: 40, right: 40)
+                  EdgeInsets.only(left: 20, right: 20)
                 )
               )
             )
