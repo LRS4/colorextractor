@@ -9,18 +9,27 @@ class ImageInput extends StatefulWidget {
 
 class _ImageInputState extends State<ImageInput> {
   late File _storedImage;
+  late String _storedImagePath; // this needs to be used by parent widget
   bool _storedImageInitialised = false;
 
-  Future<void>_takePicture() async {
+  Future<bool> _getPictureFrom(source) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? _imageFile = await _picker.pickImage(
-      source: ImageSource.camera,
+      source: source == "camera" 
+        ? ImageSource.camera 
+        : ImageSource.gallery,
       maxWidth: 600
     );
+
     setState(() {
-      _storedImage = File(_imageFile!.path);
-      _storedImageInitialised = true;
+      if (_imageFile != null) {
+        _storedImage = File(_imageFile.path);
+        _storedImagePath = _imageFile.path;
+        _storedImageInitialised = true;
+      }
     });
+
+    return true;
   }
 
   @override 
@@ -28,8 +37,8 @@ class _ImageInputState extends State<ImageInput> {
     return Row(
       children: <Widget>[
         Container(
-          width: 150, 
-          height: 150, 
+          width: 175, 
+          height: 175, 
           decoration: BoxDecoration(
             border: Border.all(width: 1, color: Colors.grey)
           ),
@@ -46,12 +55,37 @@ class _ImageInputState extends State<ImageInput> {
           alignment: Alignment.center,
         ),
         SizedBox(width: 10),
-        Expanded(
-          child: TextButton.icon(
-            icon: Icon(Icons.camera_alt),
-            label: Text("Take Photo"),
-            onPressed: _takePicture
-          )
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            TextButton.icon(
+              icon: Icon(Icons.camera_alt),
+              label: Text("Take Photo"),
+              onPressed: () => {
+                _getPictureFrom("camera")
+              },
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                  EdgeInsets.only(left: 40, right: 40)
+                )
+              )
+            ),
+            SizedBox(height: 20.0),
+            TextButton.icon(
+              icon: Icon(Icons.image),
+              label: Text("Choose Photo"),
+              onPressed: () => {
+                _getPictureFrom("gallery")
+              },
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                  EdgeInsets.only(left: 40, right: 40)
+                )
+              )
+            )
+          ]
         )
       ],
     );
