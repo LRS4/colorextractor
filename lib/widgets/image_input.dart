@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ImageInput extends StatefulWidget {
   @override 
@@ -9,6 +10,18 @@ class ImageInput extends StatefulWidget {
 class _ImageInputState extends State<ImageInput> {
   late File _storedImage;
   bool _storedImageInitialised = false;
+
+  Future<void>_takePicture() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? _imageFile = await _picker.pickImage(
+      source: ImageSource.camera,
+      maxWidth: 600
+    );
+    setState(() {
+      _storedImage = File(_imageFile!.path);
+      _storedImageInitialised = true;
+    });
+  }
 
   @override 
   Widget build(BuildContext context) {
@@ -37,7 +50,7 @@ class _ImageInputState extends State<ImageInput> {
           child: TextButton.icon(
             icon: Icon(Icons.camera_alt),
             label: Text("Take Photo"),
-            onPressed: () {}
+            onPressed: _takePicture
           )
         )
       ],
