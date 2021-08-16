@@ -1,12 +1,13 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:palette_generator/palette_generator.dart';
 
 class ImageDetailsProvider with ChangeNotifier {
-  late File _storedImage;
+  late FileImage _storedImage;
   late String _storedImagePath = "";
   bool _storedImageInitialised = false;
+  PaletteGenerator? _paletteGenerator;
 
   Future<bool> getPictureFrom(source) async {
     final ImagePicker _picker = ImagePicker();
@@ -15,20 +16,30 @@ class ImageDetailsProvider with ChangeNotifier {
         maxWidth: 600);
 
     if (_imageFile != null) {
-      _storedImage = File(_imageFile.path);
+      _storedImage = FileImage(File(_imageFile.path));
       _storedImagePath = _imageFile.path;
       _storedImageInitialised = true;
     }
+
+    await _updatePaletteGenerator();
 
     notifyListeners();
     return true;
   }
 
-  File get storedImage {
+  Future<void> _updatePaletteGenerator() async {
+    _paletteGenerator = await PaletteGenerator.fromImageProvider(
+      _storedImage,
+      size: Size(256.0, 170.0),
+      maximumColorCount: 20,
+    );
+  }
+
+  FileImage get storedImage {
     return _storedImage;
   }
 
-  set storedImage(File image) {
+  set storedImage(FileImage image) {
     _storedImage = image;
     notifyListeners();
   }
@@ -49,5 +60,9 @@ class ImageDetailsProvider with ChangeNotifier {
   set storedImageInitialised(bool val) {
     _storedImageInitialised = val;
     notifyListeners();
+  }
+
+  PaletteGenerator? get paletteGenerator {
+    return _paletteGenerator;
   }
 }

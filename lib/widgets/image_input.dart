@@ -24,7 +24,7 @@ class _ImageInputState extends State<ImageInput> {
           ),
           child: imageProvider.storedImageInitialised
             ? Image.file(
-              imageProvider.storedImage, 
+              File(imageProvider.storedImagePath), 
               fit: BoxFit.cover, 
               width: double.infinity
             ) 
