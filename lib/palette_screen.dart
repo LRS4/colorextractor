@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/image_input.dart';
+import '../widgets/color_palette.dart';
+import 'providers/image_details.dart';
 
 class ShowPaletteScreen extends StatefulWidget {
   static const routeName = "/palette";
@@ -10,7 +13,9 @@ class ShowPaletteScreen extends StatefulWidget {
 class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ChangeNotifierProvider(
+    create: (context) => ImageDetailsProvider(),
+    child: Scaffold(
         appBar: AppBar(
           title: RichText(
             text: TextSpan(
@@ -31,7 +36,6 @@ class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
             ),
           ),
           centerTitle: true,
-          
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,7 +51,8 @@ class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
                         //decoration: InputDecoration(labelText: "Title")
                       //),
                       SizedBox(height: 10),
-                      ImageInput()
+                      ImageInput(),
+                      ColorPalette(),
                     ],
                   )
                 )
@@ -76,6 +81,8 @@ class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
                 )
               )
           ],
-        ));
+        )
+      )
+    );
   }
 }
