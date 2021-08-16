@@ -20,7 +20,7 @@ class PaletteSwatches extends StatelessWidget {
       return "None";
     }
 
-    return "#" + color.value.toRadixString(16).toUpperCase();
+    return "#" + color.value.toRadixString(16).toUpperCase().substring(2);
   }
 
   @override
