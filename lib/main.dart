@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './palette_screen.dart';
+import 'navigation.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey
       ),
-      home: ShowPaletteScreen(),
+      home: Navigation(),
       routes: {
-        ShowPaletteScreen.routeName: (context) => ShowPaletteScreen()
+        Navigation.routeName: (context) => Navigation()
       }
     );
   }

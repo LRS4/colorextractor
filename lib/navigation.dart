@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/image_details.dart';
 
-class ShowPaletteScreen extends StatefulWidget {
-  static const routeName = "/palette";
+class Navigation extends StatefulWidget {
+  static const routeName = "/home";
   @override
-  _ShowPaletteScreenState createState() => _ShowPaletteScreenState();
+  _NavigationState createState() => _NavigationState();
 }
 
-class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
+class _NavigationState extends State<Navigation> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     ExtractScreen(),
