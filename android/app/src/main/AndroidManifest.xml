@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.colorextractor">
+    package="com.extractor.color">
    <application
-        android:label="colorextractor"
+        android:label="Color Extractor"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
