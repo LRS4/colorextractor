@@ -1,4 +1,5 @@
 import 'package:colorextractor/screens/extract.dart';
+import 'package:colorextractor/screens/help.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/image_details.dart';
@@ -11,10 +12,17 @@ class Navigation extends StatefulWidget {
 
 class _NavigationState extends State<Navigation> {
   int _selectedIndex = 0;
+  List<String> _appBarTitleOptions = [
+    "Color Extractor",
+    "Help"
+  ] ;
+  List<Icon> _appBarIconOptions = [
+    Icon(Icons.colorize_outlined),
+    Icon(Icons.help_outline)
+  ];
   List<Widget> _widgetOptions = <Widget>[
     ExtractScreen(),
-    Text("About"),
-    Text("Help")
+    HelpScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -33,7 +41,7 @@ class _NavigationState extends State<Navigation> {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: 'Color Extractor',
+                  text: _appBarTitleOptions[_selectedIndex],
                   style: TextStyle(
                     fontSize: 21
                   )
@@ -41,7 +49,7 @@ class _NavigationState extends State<Navigation> {
                 WidgetSpan(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                    child: Icon(Icons.colorize_rounded)
+                    child: _appBarIconOptions[_selectedIndex]
                   ),
                 ),
               ],
@@ -55,10 +63,6 @@ class _NavigationState extends State<Navigation> {
             BottomNavigationBarItem(
               icon: Icon(Icons.colorize_outlined),
               label: 'Extract',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.info_outline_rounded),
-              label: 'About',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.help),
