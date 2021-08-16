@@ -71,11 +71,11 @@ class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
                     elevation: MaterialStateProperty.all<double>(0.0),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     backgroundColor: MaterialStateProperty.all<Color>(
-                      Colors.purple.shade300),
+                      Colors.blueGrey.shade300),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.zero,
-                          side: BorderSide(color: Colors.red)
+                          side: BorderSide(color: Colors.blueGrey.shade300)
                       )
                     )
                 )
