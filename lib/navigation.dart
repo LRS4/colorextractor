@@ -15,7 +15,7 @@ class _NavigationState extends State<Navigation> {
   List<String> _appBarTitleOptions = [
     "Color Extractor",
     "Help"
-  ] ;
+  ];
   List<Icon> _appBarIconOptions = [
     Icon(Icons.colorize_outlined),
     Icon(Icons.help_outline)
