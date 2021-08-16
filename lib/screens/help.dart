@@ -89,7 +89,7 @@ class _HelpScreenState extends State<HelpScreen> {
         ),
         SizedBox(height: 8),
         Text(
-          "Happy Color Extracting",
+          "Happy Color Extracting!",
           style: TextStyle(
             fontSize: 20,
             color: Colors.teal.shade700
