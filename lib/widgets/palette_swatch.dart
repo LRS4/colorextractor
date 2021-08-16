@@ -15,6 +15,14 @@ class PaletteSwatches extends StatelessWidget {
   /// to display.
   final PaletteGenerator? generator;
 
+  String _rgbToHex(Color? color) {
+    if (color == null) {
+      return "";
+    }
+
+    return "#" + color.value.toRadixString(16).toUpperCase();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> swatches = <Widget>[];
@@ -23,29 +31,58 @@ class PaletteSwatches extends StatelessWidget {
       return Container();
     }
     for (final Color color in paletteGen.colors) {
-      swatches.add(PaletteSwatch(color: color));
+      swatches.add(
+        PaletteSwatch(
+          label: _rgbToHex(color),
+          color: color
+        )
+      );
     }
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
+        Text("All Colors"),
+        SizedBox(height: 10),
         Wrap(
           children: swatches,
         ),
         Container(height: 30.0),
-        PaletteSwatch(
-            label: 'Dominant', color: paletteGen.dominantColor?.color),
-        PaletteSwatch(
-            label: 'Light Vibrant', color: paletteGen.lightVibrantColor?.color),
-        PaletteSwatch(label: 'Vibrant', color: paletteGen.vibrantColor?.color),
-        PaletteSwatch(
-            label: 'Dark Vibrant', color: paletteGen.darkVibrantColor?.color),
-        PaletteSwatch(
-            label: 'Light Muted', color: paletteGen.lightMutedColor?.color),
-        PaletteSwatch(label: 'Muted', color: paletteGen.mutedColor?.color),
-        PaletteSwatch(
-            label: 'Dark Muted', color: paletteGen.darkMutedColor?.color),
+        Text("Dominant, Vibrant and Muted Colors"),
+        SizedBox(height: 10),
+        Wrap(
+          children: [
+            PaletteSwatch(
+              label: _rgbToHex(paletteGen.dominantColor?.color),
+              color: paletteGen.dominantColor?.color
+            ),
+            PaletteSwatch(
+              label: _rgbToHex(paletteGen.lightVibrantColor?.color),
+              color: paletteGen.lightVibrantColor?.color
+            ),
+            PaletteSwatch(
+              label: _rgbToHex(paletteGen.vibrantColor?.color),
+              color: paletteGen.vibrantColor?.color
+            ),
+            PaletteSwatch(
+              label: _rgbToHex(paletteGen.darkVibrantColor?.color),
+              color: paletteGen.darkVibrantColor?.color
+              ),
+            PaletteSwatch(
+              label: _rgbToHex(paletteGen.lightMutedColor?.color),
+              color: paletteGen.lightMutedColor?.color
+            ),
+            PaletteSwatch(
+              label: _rgbToHex(paletteGen.mutedColor?.color),
+              color: paletteGen.mutedColor?.color
+            ),
+            PaletteSwatch(
+              label: _rgbToHex(paletteGen.darkMutedColor?.color),
+              color: paletteGen.darkMutedColor?.color
+            )
+          ]
+        )
       ],
     );
   }

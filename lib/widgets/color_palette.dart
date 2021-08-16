@@ -16,7 +16,7 @@ class _ColorPaletteState extends State<ColorPalette> {
     return Column(children: [
       // Text(imageDetails.storedImagePath != "" ? imageDetails.storedImagePath : "No image set"),
       Padding(
-        padding: EdgeInsets.only(top: 40),
+        padding: EdgeInsets.only(top: 15),
         child: PaletteSwatches(generator: imageDetails.paletteGenerator)
       )
     ]);
