@@ -17,7 +17,7 @@ class PaletteSwatches extends StatelessWidget {
 
   String _rgbToHex(Color? color) {
     if (color == null) {
-      return "";
+      return "None";
     }
 
     return "#" + color.value.toRadixString(16).toUpperCase();
