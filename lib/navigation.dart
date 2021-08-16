@@ -13,7 +13,7 @@ class Navigation extends StatefulWidget {
 class _NavigationState extends State<Navigation> {
   int _selectedIndex = 0;
   List<String> _appBarTitleOptions = [
-    "Color Extractor",
+    "Color Palette Extractor",
     "Help"
   ];
   List<Icon> _appBarIconOptions = [

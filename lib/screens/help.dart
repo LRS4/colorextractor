@@ -22,7 +22,7 @@ class _HelpScreenState extends State<HelpScreen> {
         ),
         SizedBox(height: 8),
         Text(
-          "Welcome to Color Extractor, we're really pleased you chose this app! " +
+          "Welcome to Color Palette Extractor, we're really pleased you chose this app! " +
           "You can get started by either taking a photo or selecting a previously taken " +
           "photo via the gallery. You will need to allow the app to access the camera " +
           "and gallery when prompted.",
