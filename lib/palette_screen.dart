@@ -20,17 +20,17 @@ class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
           title: RichText(
             text: TextSpan(
               children: [
-                WidgetSpan(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                    child: Icon(Icons.palette_outlined)
-                  ),
-                ),
                 TextSpan(
                   text: 'Color Extractor',
                   style: TextStyle(
                     fontSize: 21
                   )
+                ),
+                WidgetSpan(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                    child: Icon(Icons.colorize_rounded)
+                  ),
                 ),
               ],
             ),
