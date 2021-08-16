@@ -1,7 +1,6 @@
+import 'package:colorextractor/screens/extract.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../widgets/image_input.dart';
-import '../widgets/color_palette.dart';
 import 'providers/image_details.dart';
 
 class ShowPaletteScreen extends StatefulWidget {
@@ -11,6 +10,19 @@ class ShowPaletteScreen extends StatefulWidget {
 }
 
 class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
+  int _selectedIndex = 0;
+  List<Widget> _widgetOptions = <Widget>[
+    ExtractScreen(),
+    Text("About"),
+    Text("Help")
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -37,51 +49,28 @@ class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
           ),
           centerTitle: true,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    children: <Widget>[
-                      //TextField(
-                        //decoration: InputDecoration(labelText: "Title")
-                      //),
-                      SizedBox(height: 10),
-                      ImageInput(),
-                      ColorPalette(),
-                    ],
-                  )
-                )
-              )
+        body: _widgetOptions.elementAt(_selectedIndex),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.colorize_outlined),
+              label: 'Extract',
             ),
-            ElevatedButton.icon(
-                icon: Icon(Icons.info_rounded),
-                label: Text("Help"),
-                onPressed: () { },
-                style: ButtonStyle(
-                    foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
-                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                      EdgeInsets.zero
-                    ),
-                    elevation: MaterialStateProperty.all<double>(0.0),
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      Colors.blueGrey.shade300),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero,
-                          side: BorderSide(color: Colors.blueGrey.shade300)
-                      )
-                    )
-                )
-              )
+            BottomNavigationBarItem(
+              icon: Icon(Icons.info_outline_rounded),
+              label: 'About',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.help),
+              label: 'Help',
+            ),
           ],
-        )
+          currentIndex: _selectedIndex,
+          unselectedItemColor: Colors.black,
+          selectedItemColor: Colors.white,
+          backgroundColor: Colors.blueGrey,
+          onTap: _onItemTapped,
+        ),
       )
     );
   }
