@@ -59,8 +59,8 @@ class _ShowPaletteScreenState extends State<ShowPaletteScreen> {
               )
             ),
             ElevatedButton.icon(
-                icon: Icon(Icons.colorize),
-                label: Text("Extract Colors"),
+                icon: Icon(Icons.favorite_border_rounded),
+                label: Text("Add to favorites"),
                 onPressed: () { },
                 style: ButtonStyle(
                     foregroundColor:
