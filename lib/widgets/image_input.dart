@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'package:colorextractor/providers/image_details.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:palette_generator/palette_generator.dart';
 import 'package:provider/provider.dart';
 
 class ImageInput extends StatefulWidget {
