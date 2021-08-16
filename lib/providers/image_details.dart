@@ -15,24 +15,29 @@ class ImageDetailsProvider with ChangeNotifier {
         source: source == "camera" ? ImageSource.camera : ImageSource.gallery,
         maxWidth: 600);
 
-    if (_imageFile != null) {
-      _storedImage = FileImage(File(_imageFile.path));
-      _storedImagePath = _imageFile.path;
-      _storedImageInitialised = true;
+    if (_imageFile == null) {
+      return false;
     }
 
-    await _updatePaletteGenerator();
+    _storedImage = FileImage(File(_imageFile.path));
+    _storedImagePath = _imageFile.path;
+    _storedImageInitialised = true;
 
+    Rect? region = Offset.zero & Size(200.0, 200.0);
+    await updatePaletteGenerator(region);
     notifyListeners();
+
     return true;
   }
 
-  Future<void> _updatePaletteGenerator() async {
+  Future<void> updatePaletteGenerator(Rect? newRegion) async {
     _paletteGenerator = await PaletteGenerator.fromImageProvider(
       _storedImage,
-      size: Size(256.0, 170.0),
+      size: Size(200.0, 200.0),
+      region: newRegion,
       maximumColorCount: 20,
     );
+    notifyListeners();
   }
 
   FileImage get storedImage {
