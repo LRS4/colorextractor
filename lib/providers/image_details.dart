@@ -35,7 +35,7 @@ class ImageDetailsProvider with ChangeNotifier {
       _storedImage,
       size: Size(200.0, 200.0),
       region: newRegion,
-      maximumColorCount: 20,
+      maximumColorCount: 16,
     );
     notifyListeners();
   }
