@@ -1,4 +1,5 @@
 import 'package:colorextractor/providers/image_details.dart';
+import 'package:colorextractor/widgets/palette_swatch.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,8 +14,11 @@ class _ColorPaletteState extends State<ColorPalette> {
     final imageDetails = Provider.of<ImageDetailsProvider>(context);
     
     return Column(children: [
-      Text("Color palette information here"),
-      Text(imageDetails.storedImagePath != "" ? imageDetails.storedImagePath : "No image set")
+      // Text(imageDetails.storedImagePath != "" ? imageDetails.storedImagePath : "No image set"),
+      Padding(
+        padding: EdgeInsets.only(top: 40),
+        child: PaletteSwatches(generator: imageDetails.paletteGenerator)
+      )
     ]);
   }
 }
