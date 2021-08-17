@@ -23,3 +23,5 @@ To build the app:
 ```
 flutter build appbundle
 ```
+
+The built app bundle can be found in the `/build/app/outputs/bundle/release` folder.
