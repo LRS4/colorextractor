@@ -100,7 +100,7 @@ class _HelpScreenState extends State<HelpScreen> {
           "Now you're ready to extract colors from real life! We hope you love using " +
           "this app as much as we do. The app was inspired by designing websites " +  
           "and finding CSS color codes. We aim to keep making the app even better through " + 
-          "updates. Once again, thanks for supporting us!",
+          "free updates - no in-app purchases ever. Once again, thanks for supporting us!",
           style: TextStyle(
             fontSize: 16,
             color: Colors.teal.shade700
