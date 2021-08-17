@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './palette_screen.dart';
+import 'navigation.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.blueGrey
       ),
-      home: ShowPaletteScreen(),
+      home: Navigation(),
       routes: {
-        ShowPaletteScreen.routeName: (context) => ShowPaletteScreen()
+        Navigation.routeName: (context) => Navigation()
       }
     );
   }

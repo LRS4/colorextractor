@@ -1,4 +1,4 @@
-package com.example.colorextractor
+package com.extractorpalette.color
 
 import io.flutter.embedding.android.FlutterActivity
 
