@@ -2,7 +2,9 @@
 
 A Flutter mobile application to extract colors from a photo. The photo can be taken with the camera or selected from the device photo gallery.
 
-## Preparing for production release
+## Building for production and release
+
+First increment the major or minor version number in the `pubspec.yaml` file.
 
 To generate icon files run:
 
@@ -14,4 +16,10 @@ To generate native splash screens run:
 
 ```
 flutter pub run flutter_native_splash:create
+```
+
+To build the app:
+
+```
+flutter build appbundle
 ```
