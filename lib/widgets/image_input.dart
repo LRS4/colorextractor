@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:colorextractor/providers/image_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ImageInput extends StatefulWidget {
   @override 
@@ -124,8 +125,10 @@ class _ImageInputState extends State<ImageInput> {
             TextButton.icon(
               icon: Icon(Icons.camera_alt),
               label: Text("Take Photo"),
-              onPressed: () => {
-                imageProvider.getPictureFrom("camera")
+              onPressed: () async => {
+                if (await Permission.camera.request().isGranted) { 
+                  imageProvider.getPictureFrom("camera")
+                }
               },
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
@@ -137,8 +140,10 @@ class _ImageInputState extends State<ImageInput> {
             TextButton.icon(
               icon: Icon(Icons.image),
               label: Text("Choose Photo"),
-              onPressed: () => {
-                imageProvider.getPictureFrom("gallery")
+              onPressed: () async => {
+                if (await Permission.storage.request().isGranted) { 
+                  imageProvider.getPictureFrom("gallery")
+                }
               },
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
